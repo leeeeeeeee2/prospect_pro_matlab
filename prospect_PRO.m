@@ -15,8 +15,8 @@
 %       - Cbrown= brown pigments content in arbitrary units
 %       - Cw  = equivalent water thickness in g/cm² or cm
 %       - Cm  = dry matter content in g/cm²
-%       - Prot = protein content g/cm²
-%       - NonProt= non protein dry matter content in g/cm²
+%       - Prot= protein content g/cm²
+%       - CBC = Carbone-based constituents content in g/cm² (cellulose, lignin, sugars...)
 %
 % Here are some examples observed during the LOPEX'93 experiment on
 % fresh (F) and dry (D) leaves :
@@ -45,9 +45,9 @@
 % Date: 2007
 % Update from PROSPECT to FLUSPECT: January 2011 (CvdT)
 
-function LRT=prospect_PRO(lambda,N,Cab,Car,Ant,Brown,Cw,Cm,Prot,NonProt,nr,Kab,Kcar,Kant,Kbrown,Kw,Km,Kprot,Knonprot)
+function LRT=prospect_PRO(lambda,N,Cab,Car,Ant,Brown,Cw,Cm,Prot,CBC,nr,Kab,Kcar,Kant,Kbrown,Kw,Km,Kprot,Kcbc)
 
-Kall=(Cab*Kab+Car*Kcar+Ant*Kant+Brown*Kbrown+Cw*Kw+Cm*Km+Prot*Kprot+NonProt*Knonprot)/N;
+Kall=(Cab*Kab+Car*Kcar+Ant*Kant+Brown*Kbrown+Cw*Kw+Cm*Km+Prot*Kprot+CBC*Kcbc)/N;
 
 j           = find(Kall>0);               % Non-conservative scattering (normal case)
 t1          = (1-Kall).*exp(-Kall);
